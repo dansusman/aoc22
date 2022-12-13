@@ -1,0 +1,4 @@
+let read_input filename =
+  In_channel.with_open_text filename In_channel.input_all |> Str.(split (regexp "\n"))
+
+In_channel.with_open_text
