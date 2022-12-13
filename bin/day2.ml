@@ -60,8 +60,8 @@ let rps_map s = List.to_seq s |> RPSMap.of_seq
 let str_map l = List.to_seq l |> StringMap.of_seq
 
 (* They play x, I win/lose by playing y*)
-let win = rps_map [RPS.Rock, RPS.Paper; RPS.Paper, RPS.Scissors; RPS.Scissors, RPS.Rock]
-let lose = rps_map [RPS.Rock, RPS.Scissors; RPS.Paper, RPS.Rock; RPS.Scissors, RPS.Paper]
+let win = rps_map  [RPS.Rock, RPS.Paper;    RPS.Paper, RPS.Scissors; RPS.Scissors, RPS.Rock]
+let lose = rps_map [RPS.Rock, RPS.Scissors; RPS.Paper, RPS.Rock;     RPS.Scissors, RPS.Paper]
 let outcome_score = str_map ["X", 0; "Y", 3; "Z", 6]
 let shape_score = rps_map [RPS.Rock, 1; RPS.Paper, 2; RPS.Scissors, 3]
 
@@ -72,7 +72,7 @@ let get_score2 s =
     match goal with
     | "X" (* I need to lose *) -> RPSMap.find elf lose
     | "Y" (* I need to draw *) -> elf
-    | _ (* I need to win *) -> RPSMap.find elf win in
+    | _   (* I need to win *)  -> RPSMap.find elf win in
   StringMap.find goal outcome_score + RPSMap.find result shape_score
   
 
